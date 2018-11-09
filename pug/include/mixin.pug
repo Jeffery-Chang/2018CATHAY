@@ -21,11 +21,23 @@ mixin jpg(name)
 	-var path = "img/"
 	-var file = ".jpg"
 	img(src=path + name + file)&attributes(attributes)
+    
 //- gif
 mixin gif(name)
 	-var path = "img/"
 	-var file = ".gif"
 	img(src=path + name + file)&attributes(attributes)
+    
+//- script
+mixin script(item)
+	- var isCDN = item.indexOf('http') > -1
+	- var date = new Date()
+	- var year = (date.getFullYear()).toString();
+	- var month = (((date.getMonth() + 1) < 10) ? '0' + (date.getMonth() + 1) : date.getMonth() + 1).toString();
+	- var day = ((date.getDate() < 10) ? '0' + date.getDate() : date.getDate()).toString();
+	- var v = '?v=' + year + month + day;
+	- var src = (isCDN) ? item : path + item + file
+	script(src = src + v)
 
 //- floorTab
 mixin floorTab(floorTabs)

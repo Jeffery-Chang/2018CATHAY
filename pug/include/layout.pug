@@ -19,7 +19,5 @@ html
             - var arr = jsArr || []
             - var path = 'js/'
             - var file = '.js'
-            each item in arr
-                - var isCDN = item.indexOf('http') > -1
-                - var src = (isCDN) ? item : path + item + file
-                script(src = src)
+        each item in arr
+            +script(item)
